@@ -35,7 +35,10 @@ async function contract(ctx) {
 
             // Let's assume all data buffers for this contract are JSON.
             // In real-world apps, we need to gracefully fitler out invalid data formats for our contract.
-            const message = JSON.parse(buf);
+            // const message = JSON.parse(buf);
+            const message = typeof buf === 'object' ? JSON.stringify(buf, null, 2) : buf;
+
+            console.log('Received message: ' + message);
 
             // Pass the JSON message to our application logic component.
             await app.handleRequest(user, message, isReadOnly);

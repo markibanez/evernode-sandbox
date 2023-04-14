@@ -12,6 +12,16 @@ async function clientApp() {
     }
 
     console.log('HotPocket Connected.');
+
+    const setResponse = client.set
+
+    console.log('Set response: ' + JSON.stringify(setResponse));
+
+    const getResponse = client.submitContractInput({
+        type: 'get'
+    });
+
+    console.log('Get response: ' + JSON.stringify(getResponse));
 }
 
 clientApp();
