@@ -28,24 +28,25 @@ HotPocket Connected.
 # Getting Started with Evernode Developer Kit (evdevkit)
 ## Use this to deploy your HotPocket smart contracts Evernode hosts
 1. Install Evernode developer kit globally with `npm i evdevkit -g`
-2. Set EV_TENANT_SECRET and EV_USER_PRIVATE_KEY. The account for EV_TENANT_SECRET must be on the hooks v3 testnet and you can generate an account at https://dashboard.evernode.org/#/testnet-faucet
+2. cd into the contract directory with `cd hello`
+3. Set EV_TENANT_SECRET and EV_USER_PRIVATE_KEY. The account for EV_TENANT_SECRET must be on the hooks v3 testnet and you can generate an account at https://dashboard.evernode.org/#/testnet-faucet
 ```powershell
 # EV_TENANT_SECRET is the tenant XRPL account secret
 # EV_USER_PRIVATE_KEY is the private key of the contract client (can be generated using `evdevkit gen key`)
 
 # Windows (command prompt)
-set EV_TENANT_SECRET=snmyH19JLWVaUJKtM4cNxTT6t38eA
-set EV_USER_PRIVATE_KEY=ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe
+set EV_TENANT_SECRET="snmyH19JLWVaUJKtM4cNxTT6t38eA"
+set EV_USER_PRIVATE_KEY="ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe"
 
 # Windows (powershell)
-$env:EV_TENANT_SECRET=snmyH19JLWVaUJKtM4cNxTT6t38eA
-$env:EV_USER_PRIVATE_KEY=ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe
+$env:EV_TENANT_SECRET="snmyH19JLWVaUJKtM4cNxTT6t38eA"
+$env:EV_USER_PRIVATE_KEY="ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe"
 
 # Linux (bash)
-export EV_TENANT_SECRET=snmyH19JLWVaUJKtM4cNxTT6t38eA
-export EV_USER_PRIVATE_KEY=ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe
+export EV_TENANT_SECRET="snmyH19JLWVaUJKtM4cNxTT6t38eA"
+export EV_USER_PRIVATE_KEY="ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe"
 ```
-3. Acquire an Evernode instance with `evdevkit acquire`. You should get an instance JSON in the response like below
+4. Acquire an Evernode instance with `evdevkit acquire`. You should get an instance JSON in the response like below
 ```javascript
 Instance created! {
   name: '04AC37D2B478F739B5FFB9F7A2B87203A083882975FC096B4C37E2E260BC5DF1',
@@ -56,24 +57,9 @@ Instance created! {
   user_port: '26201'
 }
 ```
-4. Create a deployable contract package using `evdevkit bundle` command. See example below
+5. Deploy the contract with `acquire-and-deploy [options] <contract-path> <contract-bin>`. See example below
 ```powershell
-evdevkit bundle .\hello\ ede114936e984875aeaa7c6d2b0bc9a4d66ff046de98b858e27418fb2496e585ae node -a .\hello\src\hello.js
-
-# result should be like
-command: bundle
-Prepared contract.config file.
-Added prerequisite installer script.
-Archive finished. (location: bundle/bundle.zip)
-```
-5. Deploy the contract package to the Evernode instance with `evdevkit deploy <path to contract bundle> <IP of the instance> <User port of the instance>`. See example below
-```powershell
-evdevkit deploy .\bundle\bundle.zip fxrpl.dev 26201
-```
-6. If everything went well, you should see logs in the terminal like
-```powershell
-My public key is: edf83f59315475288df8ba339ca7ba992c7ebc898bc8385501c9f0bfd263eb4a63
-Connecting to wss://fxrpl.dev:26201
-Connected to wss://fxrpl.dev:26201
-Bootstrap contract is online
+#contract-path is current directory (. = /hello in this case)
+#contract-bin is the command to run the contract (node -a .\src\hello.js)
+evdevkit acquire-and-deploy . node -a .\src\hello.js
 ```
