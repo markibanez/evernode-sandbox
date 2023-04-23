@@ -1,6 +1,11 @@
 {
-    "name": "hello-client",
-    "dependencies": {
-        "hotpocket-js-client": "0.5.3"
-    }
+  "name": "hello-client",
+  "dependencies": {
+    "hotpocket-js-client": "0.5.3"
+  },
+  "author": {
+    "name": "Mark Ibanez",
+    "email": "mark.ibanez@gmail.com",
+    "github": "https://github.com/markibanez"
+  }
 }
