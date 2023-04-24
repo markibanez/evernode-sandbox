@@ -60,6 +60,31 @@ Instance created! {
 5. Deploy the contract with `acquire-and-deploy [options] <contract-path> <contract-bin>`. See example below
 ```powershell
 #contract-path is current directory (. = /hello in this case)
-#contract-bin is the command to run the contract (node -a .\src\hello.js)
-evdevkit acquire-and-deploy . node -a .\src\hello.js
+#contract-bin is the command to run the contract (/usr/bin/node -a ./src/hello.js). This command is from the pov of the host node which runs on Linux and is there reason for the /usr/bin/node and forwards slashes
+evdevkit acquire-and-deploy . /usr/bin/node -a ./src/hello.js
+```
+6. If everything went well, you should see logs in the terminal like
+```powershell
+command: acquire-and-deploy
+Picked random host rsEYGLqSobDiZpydSXq6dK4awsxFegqNMK
+Transaction result: tesSUCCESS
+Waiting for acquire response... (txHash: 8B2424129793224161DAAADE813FF9666820A0ADBD71B5917960001FD6CBB6F6)
+Instance created! {
+  name: '35A4438D3E81892821E889A98E4946FEAF0AC7C5F79496073F434BEEC1F2779B',
+  ip: 'evernode.digiwarp.io',
+  pubkey: 'edd3137567ae6d7520cd2f3ceb7ccadb49bd45e73b6af6ecc4af2b6d2d961829dd',
+  contract_id: '81d3e103-7338-4db5-a34f-e82e744b0e8c',
+  peer_port: '22861',
+  user_port: '26201'
+}
+Prepared contract.config file.
+Added prerequisite installer script.
+Archive finished. (location: ..\bundle/bundle.zip)
+My public key is: ed398db445fc2af4f38c102dc093d393d38d50398d7ad3768e45463b295bf6eaf7
+Connecting to wss://evernode.digiwarp.io:26201
+Connected to wss://evernode.digiwarp.io:26201
+Bootstrap contract is online
+Contract bundle uploaded!
+Contract deployed!
+Closing connection to wss://evernode.digiwarp.io:26201
 ```
