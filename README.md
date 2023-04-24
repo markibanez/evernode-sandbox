@@ -63,7 +63,7 @@ Instance created! {
 #contract-bin is the command to run the contract (/usr/bin/node -a ./src/hello.js). This command is from the pov of the host node which runs on Linux and is there reason for the /usr/bin/node and forwards slashes
 evdevkit acquire-and-deploy . /usr/bin/node -a ./src/hello.js
 ```
-6. If everything went well, you should see logs in the terminal like
+6. If everything went well, you should see logs in the terminal like. Congrats! You've deployed your HotPocket smart contract on Evernode!
 ```powershell
 command: acquire-and-deploy
 Picked random host rsEYGLqSobDiZpydSXq6dK4awsxFegqNMK
